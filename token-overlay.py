@@ -14,7 +14,7 @@ Features:
 - Self-update from GitHub
 """
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 import json
 import os
