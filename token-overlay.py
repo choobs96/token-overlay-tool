@@ -14,7 +14,7 @@ Features:
 - Self-update from GitHub
 """
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 import json
 import os
@@ -709,24 +709,6 @@ class TokenOverlay:
             )
             self.refresh_btn.pack(side="left")
 
-            self.update_btn = tk.Button(
-                btn_frame,
-                text="Update",
-                font=("SF Mono", 11, "bold"),
-                command=self.check_and_apply_update,
-                bg="#4488ff",
-                fg=btn_fg,
-                activebackground="#5599ff",
-                activeforeground=btn_fg,
-                relief="solid",
-                borderwidth=2,
-                padx=18,
-                pady=10,
-                cursor="hand2",
-                highlightthickness=0
-            )
-            self.update_btn.pack(side="left", padx=(6, 0))
-
             self.status_label = tk.Label(
                 btn_frame,
                 text="",
@@ -1250,6 +1232,24 @@ class TokenOverlay:
         )
         save_btn.pack(side="left", padx=2)
 
+        update_btn = tk.Button(
+            btn_frame,
+            text="Update",
+            font=("SF Mono", 10, "bold"),
+            command=self.check_and_apply_update,
+            bg="#4488ff",
+            fg="#000000",
+            activebackground="#5599ff",
+            activeforeground="#000000",
+            relief="solid",
+            borderwidth=2,
+            padx=10,
+            pady=6,
+            cursor="hand2",
+            highlightthickness=0
+        )
+        update_btn.pack(side="left", padx=2)
+
         uninstall_btn = tk.Button(
             btn_frame,
             text="Uninstall",
@@ -1368,9 +1368,9 @@ class TokenOverlay:
         threading.Thread(target=do_check, daemon=True).start()
 
     def _show_update_indicator(self):
-        """Show update available indicator on Update button."""
-        if hasattr(self, "update_btn"):
-            self.update_btn.config(text="⬆ Update", bg="#ff8800", activebackground="#ffaa33")
+        """Show update available indicator on Settings button."""
+        if hasattr(self, "settings_btn"):
+            self.settings_btn.config(text="* Settings", fg="#ff8800")
 
     def check_and_apply_update(self):
         """Check for updates and apply if available."""
@@ -1419,8 +1419,8 @@ class TokenOverlay:
         """Handle update completion."""
         if success:
             self.update_available = None
-            if hasattr(self, "update_btn"):
-                self.update_btn.config(text="Update", bg="#4488ff", activebackground="#5599ff")
+            if hasattr(self, "settings_btn"):
+                self.settings_btn.config(text="Settings", fg="#00ff88")
             restart = tk.messagebox.askyesno(
                 "Update Complete",
                 f"{message}\n\nRestart now to use the new version?"
