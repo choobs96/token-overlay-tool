@@ -43,9 +43,14 @@ The installer will prompt for any missing values. It also sets up auto-start so 
 - **Daily** - Per-day token and cost breakdown
 - **30min** - Last 30 minutes of usage
 
+### Theme & Transparency
+
+- **Dark/Light theme** - Toggle via the `☾`/`☀` button in Settings
+- **Transparency** - Adjust window opacity (0.3–1.0) with the slider in Settings; changes preview live and persist across restarts
+
 ### Updating
 
-The overlay checks for updates on startup. If a new version is available, the Settings button shows `* Settings`. Open Settings and click **Update** to install the latest version.
+The overlay checks for updates on startup. If a new version is available, the Settings icon (`⚙`) turns orange. Open Settings and click the download button (`⇣`) to install the latest version.
 
 ### Configuration
 
@@ -56,11 +61,13 @@ Config is stored at `~/.config/token-overlay/config.json`:
   "api_key": "your-honeycomb-api-key",
   "user_email": "your.email@company.com",
   "dataset": "claude-code",
-  "environment": "your-environment"
+  "environment": "your-environment",
+  "theme": "dark",
+  "opacity": 1.0
 }
 ```
 
-You can also edit settings from the overlay UI via the Settings button.
+You can also edit settings from the overlay UI via the Settings button (`⚙`).
 
 ## Uninstall
 
